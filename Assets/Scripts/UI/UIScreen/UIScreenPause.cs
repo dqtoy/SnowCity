@@ -16,35 +16,22 @@ public class UIScreenPause : UIScreen
         btnQuit.onClick.AddListener(OnQuitBtnClicked);
     }
 
-    protected override void InitData()
-    {
-
-    }
-
-    protected override void InitView()
-    {
-
-    }
-
-    public override void OnClose()
-    {
-
-    }
-
     public override void OnHide()
     {
+        base.OnHide();
         Time.timeScale = 1;
     }
 
     public override void OnShow()
     {
+        base.OnShow();
         Time.timeScale = 0;
     }
 
     private void OnQuitBtnClicked()
     {
         UIManager.Instance.Push<UIScreenLoading>(UIDepthConst.TopDepth);
-        SceneManager.LoadSceneAsync("MainMenu").completed += delegate
+        SceneManager.LoadSceneAsync("NewMenu").completed += delegate
         {
             UIManager.Instance.PopToBottom();
         };

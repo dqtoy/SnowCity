@@ -153,7 +153,8 @@ public class UIManager : MonoSingleton<UIManager>
     //将一个已经关闭的窗口加到池中
     private void AddScreenToPool(UIScreen targetScreen)
     {
-        screenPool.Add(targetScreen.GetType(), targetScreen);
+        if(!screenPool.ContainsKey(targetScreen.GetType()))
+            screenPool.Add(targetScreen.GetType(), targetScreen);
     }
 
     private void InitEvent()
@@ -170,6 +171,7 @@ public class UIManager : MonoSingleton<UIManager>
     private void OnGameOver(object[] data)
     {
         UIManager.Instance.Push<UIScreenCG>(UIDepthConst.TopDepth, false, "Maybe you have already realized. This world is only an imagination, a mirror of the real world. I created this world to guide those Frozen hearts, those who isolate themselves in this icy world, and those who are afraid to communicate with others just because of language barrier and culture difference. Someday you might realize that this world is not that complicated as you imgained. Unfreeze your heart and take your first step.             -- Aki, the creator of this world", 2f, 2.0f);
+        LevelManager.Instance.SwitchGameState(GameState.End);
     }
 
 }

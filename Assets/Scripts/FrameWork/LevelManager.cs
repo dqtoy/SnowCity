@@ -8,10 +8,10 @@ public class LevelManager : MonoSingleton<LevelManager>
 {
 	public Camera CGCamera;
 
-    public GameState gameState;
+    public GameState gameState = GameState.End;
 	private PlayableDirector director;
 
-	void Start ()
+	public void OnGameStart()
 	{
 		director = CGCamera.GetComponent<PlayableDirector>();
         SwitchGameState(GameState.CG);

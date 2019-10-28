@@ -32,6 +32,7 @@ public class UIScreenCG : UIScreen
     public override void OnShow()
     {
         base.OnShow();
+        LevelManager.Instance.SwitchGameState(GameState.CG);
         showTweener = msgPanel.DOFade(1, showDelay).SetEase(Ease.InOutElastic);
         showTweener.onComplete = () =>
         {
@@ -55,7 +56,7 @@ public class UIScreenCG : UIScreen
         }
         DOVirtual.DelayedCall(1, () =>
         {
-            OnHide();
+            UIManager.Instance.Pop(UIDepthConst.TopDepth);
         });
     }
 
@@ -64,6 +65,7 @@ public class UIScreenCG : UIScreen
         hideTweener = msgPanel.DOFade(0, destroyDelay).SetEase(Ease.InOutElastic);
         hideTweener.onComplete = () =>
         {
+            LevelManager.Instance.SwitchGameState(GameState.InGame);
             OnClose();
         };
     }
