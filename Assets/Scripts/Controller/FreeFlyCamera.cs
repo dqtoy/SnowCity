@@ -74,6 +74,7 @@ public class FreeFlyCamera : MonoBehaviour
         cam = GetComponent<Camera>();
         _initPosition = transform.position;
         _initRotation = transform.eulerAngles;
+        cam.depth = -100;
     }
 
     private void OnEnable()

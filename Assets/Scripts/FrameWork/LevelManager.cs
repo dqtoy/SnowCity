@@ -52,8 +52,8 @@ public class LevelManager : MonoSingleton<LevelManager>
                 Cursor.visible = false;
                 break;
             case GameState.InGame:
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 break;
             case GameState.Pause:
                 Cursor.lockState = CursorLockMode.None;

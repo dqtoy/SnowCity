@@ -29,6 +29,7 @@ public class UIScreenMainMenu : UIScreen
 
     private void OnLevelSelectionButtonClicked()
     {
+        PlayerPrefs.DeleteAll();
         UIManager.Instance.Pop(UIDepthConst.BottomDepth);
         UIManager.Instance.Push<UIScreenLoading>(UIDepthConst.TopDepth, true);
         SceneManager.LoadSceneAsync("InGame").completed += delegate
@@ -37,7 +38,7 @@ public class UIScreenMainMenu : UIScreen
             UIManager.Instance.Push<UIScreenHUD>(UIDepthConst.MiddleDepth);
             UIManager.Instance.Push<UIScreenCG>(UIDepthConst.TopDepth, false, "Aki woke up in a warm hut. There is a snowman around, he seems to be watching Aki.", 0f,2.0f);
             AudioManager.Instance.PlayMusic(MusicAudio.InGameAudio);
-            LevelManager.Instance.SwitchGameState(GameState.InGame);
+            LevelManager.Instance.SwitchGameState(GameState.CG);
         };
     }
 
